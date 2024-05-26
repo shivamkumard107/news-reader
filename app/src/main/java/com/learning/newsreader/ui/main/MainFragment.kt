@@ -9,10 +9,14 @@ import com.learning.newsreader.databinding.FragmentMainBinding
 import com.learning.newsreader.di.component.DaggerFragmentComponent
 import com.learning.newsreader.di.module.FragmentModule
 import com.learning.newsreader.ui.MainActivity
+import javax.inject.Inject
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
+
+    @Inject
+    lateinit var viewModel: MainFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,

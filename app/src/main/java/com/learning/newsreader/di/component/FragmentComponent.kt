@@ -1,7 +1,7 @@
 package com.learning.newsreader.di.component
 
 import android.content.Context
-//import com.learning.newsreader.di.FragmentContext
+import com.learning.newsreader.di.FragmentContext
 import com.learning.newsreader.di.FragmentScope
 import com.learning.newsreader.di.module.FragmentModule
 import com.learning.newsreader.ui.main.MainFragment
@@ -19,6 +19,6 @@ interface FragmentComponent {
 
     fun inject(fragment: MainFragment)
 
-//    @FragmentContext
-//    fun getContext(): Context
+    @FragmentContext
+    fun getContext(): Context
 }
