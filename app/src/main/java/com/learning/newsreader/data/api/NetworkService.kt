@@ -1,7 +1,7 @@
 package com.learning.newsreader.data.api
 
 import com.learning.newsreader.utils.Constants.API_KEY
-import me.amitshekhar.newsapp.data.model.TopHeadlinesResponse
+import com.learning.newsreader.data.model.TopHeadlinesResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query

@@ -15,7 +15,7 @@ import com.learning.newsreader.di.component.DaggerActivityComponent
 import com.learning.newsreader.di.module.ActivityModule
 import com.learning.newsreader.ui.base.UiState
 import kotlinx.coroutines.launch
-import me.amitshekhar.newsapp.data.model.Article
+import com.learning.newsreader.data.model.Article
 import javax.inject.Inject
 
 class TopHeadlineActivity : AppCompatActivity() {

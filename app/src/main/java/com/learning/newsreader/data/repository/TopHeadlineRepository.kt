@@ -4,7 +4,7 @@ import com.learning.newsreader.data.api.NetworkService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import me.amitshekhar.newsapp.data.model.Article
+import com.learning.newsreader.data.model.Article
 import javax.inject.Inject
 import javax.inject.Singleton
 

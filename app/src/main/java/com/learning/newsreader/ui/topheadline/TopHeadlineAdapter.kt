@@ -8,7 +8,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.learning.newsreader.databinding.TopHeadlineItemLayoutBinding
-import me.amitshekhar.newsapp.data.model.Article
+import com.learning.newsreader.data.model.Article
 
 class TopHeadlineAdapter(
     private val articleList: ArrayList<Article>
