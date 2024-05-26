@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.learning.newsreader.data.repository.TopHeadlineRepository
 import com.learning.newsreader.di.ActivityContext
 import com.learning.newsreader.ui.base.ViewModelProviderFactory
+import com.learning.newsreader.ui.main.MainActivityViewModel
 import com.learning.newsreader.ui.topheadline.TopHeadlineAdapter
 import com.learning.newsreader.ui.topheadline.TopHeadlineViewModel
 import dagger.Module
@@ -29,6 +30,11 @@ class ActivityModule(private val activity: AppCompatActivity) {
                 TopHeadlineViewModel(topHeadlineRepository)
             }
         )[TopHeadlineViewModel::class.java]
+    }
+
+    @Provides
+    fun provideMainActivityViewModel(): MainActivityViewModel {
+        return ViewModelProviders.of(activity)[MainActivityViewModel::class.java]
     }
 
     @Provides
