@@ -18,6 +18,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+enableFeaturePreview("VERSION_CATALOGS")
 
 rootProject.name = "NewsReader"
 include ':app'
