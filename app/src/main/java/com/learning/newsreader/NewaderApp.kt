@@ -7,7 +7,7 @@ import com.learning.newsreader.di.module.ApplicationModule
 
 class NewsReaderApp : Application() {
 
-    private lateinit var applicationComponent: ApplicationComponent
+    lateinit var applicationComponent: ApplicationComponent
 
     override fun onCreate() {
         super.onCreate()
