@@ -1,24 +1,26 @@
 package com.learning.newsreader.ui.topheadline
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.learning.newsreader.NewsReaderApp
-import com.learning.newsreader.databinding.ActivityTopHeadlineBinding
-import com.learning.newsreader.di.component.DaggerActivityComponent
-import com.learning.newsreader.di.module.ActivityModule
+import com.learning.newsreader.data.model.Article
+import com.learning.newsreader.databinding.FragmentTopHeadlineBinding
+import com.learning.newsreader.di.component.DaggerFragmentComponent
+import com.learning.newsreader.di.module.FragmentModule
+import com.learning.newsreader.ui.MainActivity
 import com.learning.newsreader.ui.base.UiState
 import kotlinx.coroutines.launch
-import com.learning.newsreader.data.model.Article
 import javax.inject.Inject
 
-class TopHeadlineActivity : AppCompatActivity() {
+class TopHeadlineFragment : Fragment() {
 
     @Inject
     lateinit var newsListViewModel: TopHeadlineViewModel
@@ -26,20 +28,27 @@ class TopHeadlineActivity : AppCompatActivity() {
     @Inject
     lateinit var adapter: TopHeadlineAdapter
 
-    private lateinit var binding: ActivityTopHeadlineBinding
+    private lateinit var binding: FragmentTopHeadlineBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        injectDependencies()
-        super.onCreate(savedInstanceState)
-        binding = ActivityTopHeadlineBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        injectDependency()
+        val binding = FragmentTopHeadlineBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupUI()
         setupObserver()
     }
 
     private fun setupUI() {
         val recyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(
             DividerItemDecoration(
                 recyclerView.context,
@@ -59,14 +68,16 @@ class TopHeadlineActivity : AppCompatActivity() {
                             renderList(it.data)
                             binding.recyclerView.visibility = View.VISIBLE
                         }
+
                         is UiState.Loading -> {
                             binding.progressBar.visibility = View.VISIBLE
                             binding.recyclerView.visibility = View.GONE
                         }
+
                         is UiState.Error -> {
                             //Handle Error
                             binding.progressBar.visibility = View.GONE
-                            Toast.makeText(this@TopHeadlineActivity, it.message, Toast.LENGTH_LONG)
+                            Toast.makeText(activity, it.message, Toast.LENGTH_LONG)
                                 .show()
                         }
                     }
@@ -80,10 +91,12 @@ class TopHeadlineActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
-    private fun injectDependencies() {
-        DaggerActivityComponent.builder()
-            .applicationComponent((application as NewsReaderApp).applicationComponent)
-            .activityModule(ActivityModule(this)).build().inject(this)
+    private fun injectDependency() {
+        DaggerFragmentComponent
+            .builder()
+            .fragmentModule(FragmentModule(this))
+            .activityComponent((activity as MainActivity).activityComponent)
+            .build().inject(this)
     }
 
 }
