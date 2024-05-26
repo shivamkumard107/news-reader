@@ -8,7 +8,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    private lateinit var viewModel: MainActivityViewModel
+    lateinit var viewModel: MainActivityViewModel
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
