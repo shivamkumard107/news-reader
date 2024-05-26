@@ -6,6 +6,7 @@ import com.learning.newsreader.NewsReaderApp
 import com.learning.newsreader.databinding.ActivityMainBinding
 import com.learning.newsreader.di.component.ActivityComponent
 import com.learning.newsreader.di.component.DaggerActivityComponent
+import com.learning.newsreader.di.module.ActivityModule
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private fun injectDependency() {
         activityComponent = DaggerActivityComponent
             .builder()
+            .activityModule(ActivityModule(this))
             .applicationComponent((application as NewsReaderApp).applicationComponent)
             .build()
         activityComponent.inject(this)
