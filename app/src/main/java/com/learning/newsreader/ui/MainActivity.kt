@@ -7,6 +7,7 @@ import com.learning.newsreader.databinding.ActivityMainBinding
 import com.learning.newsreader.di.component.ActivityComponent
 import com.learning.newsreader.di.component.DaggerActivityComponent
 import com.learning.newsreader.di.module.ActivityModule
+import com.learning.newsreader.ui.main.MainFragment
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +23,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupUI()
+    }
+
+    private fun setupUI() {
+        supportFragmentManager
+            .beginTransaction()
+            .add(binding.container.id, MainFragment.newInstance())
+            .commit()
     }
 
     private fun injectDependency() {

@@ -10,7 +10,7 @@ import dagger.Component
 
 @FragmentScope
 @Component(
-    dependencies = [ActivityComponent::class],
+    dependencies = [ActivityComponent::class, ApplicationComponent::class],
     modules = [FragmentModule::class]
 )
 interface FragmentComponent {

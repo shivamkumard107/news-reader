@@ -14,6 +14,4 @@ interface ActivityComponent {
     fun inject(activity: MainActivity)
 
     fun getTopHeadlineAdapter(): TopHeadlineAdapter
-
-    fun getTopHeadlineRepository(): TopHeadlineRepository
 }

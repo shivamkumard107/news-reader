@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.learning.newsreader.NewsReaderApp
 import com.learning.newsreader.data.model.Article
 import com.learning.newsreader.databinding.FragmentTopHeadlineBinding
 import com.learning.newsreader.di.component.DaggerFragmentComponent
@@ -96,6 +97,7 @@ class TopHeadlineFragment : Fragment() {
             .builder()
             .fragmentModule(FragmentModule(this))
             .activityComponent((activity as MainActivity).activityComponent)
+            .applicationComponent((requireActivity().application as NewsReaderApp).applicationComponent)
             .build().inject(this)
     }
 
