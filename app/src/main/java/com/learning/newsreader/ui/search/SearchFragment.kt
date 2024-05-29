@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.learning.newsreader.databinding.FragmentSearchBinding
+import com.learning.newsreader.ui.base.BaseJetpackFragment
 
-class SearchFragment : Fragment() {
-    private lateinit var binding: FragmentSearchBinding
+class SearchFragment : BaseJetpackFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate) {
     override fun onCreateView(
-        layoutInflater: LayoutInflater,
+        inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSearchBinding.inflate(layoutInflater)
+        super.onCreateView(inflater, container, savedInstanceState)
+        setupUi()
         return binding.root
+    }
+
+    private fun setupUi() {
+
     }
 }

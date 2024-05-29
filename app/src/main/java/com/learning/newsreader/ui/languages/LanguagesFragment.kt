@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.learning.newsreader.databinding.FragmentLangaugesBinding
+import com.learning.newsreader.ui.base.BaseJetpackFragment
 
-class LanguagesFragment: Fragment() {
-    private lateinit var binding: FragmentLangaugesBinding
+class LanguagesFragment: BaseJetpackFragment<FragmentLangaugesBinding>(FragmentLangaugesBinding::inflate) {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLangaugesBinding.inflate(inflater)
+        super.onCreateView(inflater, container, savedInstanceState)
         return binding.root
     }
 

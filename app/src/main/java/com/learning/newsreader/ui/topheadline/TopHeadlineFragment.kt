@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -17,11 +16,13 @@ import com.learning.newsreader.databinding.FragmentTopHeadlineBinding
 import com.learning.newsreader.di.component.DaggerFragmentComponent
 import com.learning.newsreader.di.module.FragmentModule
 import com.learning.newsreader.ui.MainActivity
+import com.learning.newsreader.ui.base.BaseJetpackFragment
 import com.learning.newsreader.ui.base.UiState
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class TopHeadlineFragment : Fragment() {
+class TopHeadlineFragment :
+    BaseJetpackFragment<FragmentTopHeadlineBinding>(FragmentTopHeadlineBinding::inflate) {
 
     @Inject
     lateinit var newsListViewModel: TopHeadlineViewModel
@@ -29,16 +30,13 @@ class TopHeadlineFragment : Fragment() {
     @Inject
     lateinit var adapter: TopHeadlineAdapter
 
-    private lateinit var binding: FragmentTopHeadlineBinding
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         injectDependency()
-        binding = FragmentTopHeadlineBinding.inflate(inflater, container, false)
         setupUI()
         return binding.root
     }

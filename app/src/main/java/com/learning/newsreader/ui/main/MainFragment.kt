@@ -11,12 +11,11 @@ import com.learning.newsreader.databinding.FragmentMainBinding
 import com.learning.newsreader.di.component.DaggerFragmentComponent
 import com.learning.newsreader.di.module.FragmentModule
 import com.learning.newsreader.ui.MainActivity
+import com.learning.newsreader.ui.base.BaseJetpackFragment
 import com.learning.newsreader.utils.findNavControllerLazy
 import javax.inject.Inject
 
-class MainFragment : Fragment() {
-
-    private lateinit var binding: FragmentMainBinding
+class MainFragment : BaseJetpackFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
     @Inject
     lateinit var viewModel: MainFragmentViewModel
@@ -28,14 +27,10 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         injectDependency()
-        binding = FragmentMainBinding.inflate(inflater, container, false)
         setupUi()
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun setupUi() {

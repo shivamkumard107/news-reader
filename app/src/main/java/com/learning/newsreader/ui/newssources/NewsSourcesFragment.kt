@@ -4,15 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.learning.newsreader.databinding.FragmentNewsSourceBinding
+import com.learning.newsreader.ui.base.BaseJetpackFragment
 
-class NewsSourcesFragment : Fragment() {
+class NewsSourcesFragment :
+    BaseJetpackFragment<FragmentNewsSourceBinding>(FragmentNewsSourceBinding::inflate) {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
+        setupUi()
+        return binding.root
+    }
+
+    private fun setupUi() {
+        TODO("Not yet implemented")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
