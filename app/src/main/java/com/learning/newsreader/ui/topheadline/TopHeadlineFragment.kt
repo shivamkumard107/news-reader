@@ -38,7 +38,7 @@ class TopHeadlineFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         injectDependency()
-        val binding = FragmentTopHeadlineBinding.inflate(inflater, container, false)
+        binding = FragmentTopHeadlineBinding.inflate(inflater, container, false)
         return binding.root
     }
 
