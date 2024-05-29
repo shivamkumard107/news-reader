@@ -39,11 +39,12 @@ class TopHeadlineFragment : Fragment() {
     ): View {
         injectDependency()
         binding = FragmentTopHeadlineBinding.inflate(inflater, container, false)
+        setupUI()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setupUI()
+        super.onViewCreated(view, savedInstanceState)
         setupObserver()
     }
 

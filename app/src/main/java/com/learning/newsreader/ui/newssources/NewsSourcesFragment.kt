@@ -18,13 +18,4 @@ class NewsSourcesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
-    companion object {
-        fun newInstance(): NewsSourcesFragment {
-            val args = Bundle()
-            val fragment = NewsSourcesFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
 }

@@ -5,26 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.learning.newsreader.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
+    private lateinit var binding: FragmentSearchBinding
     override fun onCreateView(
-        inflater: LayoutInflater,
+        layoutInflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
-    companion object {
-        fun newInstance(): SearchFragment {
-            val args = Bundle()
-            val fragment = SearchFragment ()
-            fragment.arguments = args
-            return fragment
-        }
+    ): View {
+        binding = FragmentSearchBinding.inflate(layoutInflater)
+        return binding.root
     }
 }

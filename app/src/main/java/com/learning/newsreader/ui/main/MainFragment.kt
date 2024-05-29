@@ -30,18 +30,33 @@ class MainFragment : Fragment() {
     ): View {
         injectDependency()
         binding = FragmentMainBinding.inflate(inflater, container, false)
+        setupUi()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUi()
     }
 
     private fun setupUi() {
-        binding.btTopHeadlines.setOnClickListener {
-            navController.navigate(R.id.action_mainFragment_to_topHeadlineFragment)
+        binding.apply {
+            btTopHeadlines.setOnClickListener {
+                navController.navigate(R.id.action_mainFragment_to_topHeadlineFragment)
+            }
+            btNewsSources.setOnClickListener {
+                navController.navigate(R.id.action_mainFragment_to_newsSourcesFragment)
+            }
+            btCountries.setOnClickListener {
+                navController.navigate(R.id.action_mainFragment_to_countriesFragment)
+            }
+            btLanguages.setOnClickListener {
+                navController.navigate(R.id.action_mainFragment_to_languagesFragment)
+            }
+            btSearch.setOnClickListener {
+                navController.navigate(R.id.action_mainFragment_to_searchFragment)
+            }
         }
+
     }
 
     private fun injectDependency() {

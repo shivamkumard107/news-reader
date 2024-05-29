@@ -5,23 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.learning.newsreader.databinding.FragmentCountriesBinding
 
 class CountriesFragment : Fragment() {
+
+    private lateinit var binding: FragmentCountriesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
-    companion object {
-        fun newInstance(): CountriesFragment {
-            val args = Bundle()
-            val fragment = CountriesFragment()
-            fragment.arguments = args
-            return fragment
-        }
+    ): View {
+        binding = FragmentCountriesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }
