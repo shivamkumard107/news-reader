@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/mainFragment">
 
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.learning.newsreader.ui.main.MainFragment"
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_mainFragment_to_topHeadlineFragment"
+            app:destination="@id/topHeadlineFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_countriesFragment"
+            app:destination="@id/countriesFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_newsSourcesFragment"
+            app:destination="@id/newsSourcesFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_languagesFragment"
+            app:destination="@id/languagesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/topHeadlineFragment"
+        android:name="com.learning.newsreader.ui.topheadline.TopHeadlineFragment"
+        android:label="fragment_top_headline"
+        tools:layout="@layout/fragment_top_headline">
+
+    </fragment>
+    <fragment
+        android:id="@+id/countriesFragment"
+        android:name="com.learning.newsreader.ui.countries.CountriesFragment"
+        android:label="CountriesFragment" />
+    <fragment
+        android:id="@+id/newsSourcesFragment"
+        android:name="com.learning.newsreader.ui.newssources.NewsSourcesFragment"
+        android:label="NewsSourcesFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.learning.newsreader.ui.search.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.learning.newsreader.ui.languages.LanguagesFragment"
+        android:label="LanguagesFragment" />
 </navigation>

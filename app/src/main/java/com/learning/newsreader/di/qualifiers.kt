@@ -14,6 +14,6 @@ annotation class ApplicationContext
 @Retention(AnnotationRetention.BINARY)
 annotation class BaseUrl
 
-//@Qualifier
-//@Retention(AnnotationRetention.BINARY)
-//annotation class FragmentContext
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class FragmentContext
